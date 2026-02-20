@@ -22,7 +22,7 @@ public class CategoriaCollectionRepository {
         categorias.add(livros);
     }
 
-    public static List<Categoria> findAll() {
+    public List<Categoria> findAll() {
         return categorias;
     }
 
