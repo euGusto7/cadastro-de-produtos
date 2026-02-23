@@ -1,5 +1,6 @@
 package produtos;
 
+import java.util.List;
 import produtos.model.Categoria;
 import produtos.model.Produto;
 import produtos.repository.CategoriaCollectionRepository;
@@ -48,6 +49,16 @@ public class Main {
 
     private static void consultarProdutoPorCategoria() {
         System.out.println("Consultar Produto por Categoria");
+        Categoria categoria = CategoriaView.select(null);
+
+        List<Produto> produtos = ProdutoCollectionRepository.findByCategoria(categoria);
+
+        if (produtos.isEmpty()) {
+            System.out.println("Nenhum produto encontrado para a categoria: " + categoria.getNome());
+        } else {
+            produtos.forEach(ProdutoView::show);
+            produtos.forEach(System.out::println);
+        }
     }
 
     private static void encerrarSistema() {
