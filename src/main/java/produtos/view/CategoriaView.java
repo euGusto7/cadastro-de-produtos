@@ -10,7 +10,7 @@ public class CategoriaView {
 
     public static Categoria select(Categoria categoria) {
         Categoria ret = (Categoria) JOptionPane.showInputDialog(null, "Selecione uma categoria:", "Menu",
-                JOptionPane.QUESTION_MESSAGE, null, repository.findAll().toArray(),
+                JOptionPane.QUESTION_MESSAGE, null, CategoriaCollectionRepository.findAll().toArray(),
                 categoria == null ? 1 : categoria);
         return ret;
     }
@@ -25,9 +25,9 @@ public class CategoriaView {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public Categoria form() {
-        String nome = JOptionPane.showInputDialog(null, "Digite o nome da categoria:", "Cadastro de Categoria",
-                JOptionPane.QUESTION_MESSAGE);
+    public Categoria form(Categoria categoria) {
+        String nome = JOptionPane.showInputDialog(null, "Digite o nome da categoria:",
+                categoria == null ? "" : categoria.getNome());
         return new Categoria(nome);
     }
 }
