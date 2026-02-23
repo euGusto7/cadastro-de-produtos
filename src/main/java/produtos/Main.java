@@ -45,6 +45,13 @@ public class Main {
 
     private static void consultarProdutoPorId() {
         System.out.println("Consultar Produto por ID");
+        Produto produto = ProdutoView.select(null);
+        if (produto != null) {
+            ProdutoView.show(produto);
+            System.out.println(produto);
+        } else {
+            System.out.println("Produto não encontrado.");
+        }
     }
 
     private static void consultarProdutoPorCategoria() {
